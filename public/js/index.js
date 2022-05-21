@@ -65,7 +65,24 @@ function update_amount(event) {
 }
 
 function remove_parent(event) {
-   return event.target.parentNode.remove();
+   event.target.parentNode.remove();
+   console.log(event.target.parentNode.id)
+   if(isNaN(event.target.parentNode.id)) {
+      let current_id = event.target.parentNode.id.split("_")[0].toString()
+      let current_class_name = current_id + "_expense_amount";
+      const amount_spans = document.getElementsByClassName(current_class_name);
+      let sum = 0;
+      console.log(amount_spans);
+      for(let i = 0; i < amount_spans.length; i ++) {
+         sum += Number(amount_spans[i].innerText);
+      }
+      // amount_spans.forEach(e => sum += Number(e.innerText));
+      const outcome_total_span = document.getElementById("outcome_total_" + current_id);
+      
+      
+      outcome_total_span.innerText = sum;
+   }
+
 }
 
 function add_person() {
@@ -173,6 +190,7 @@ function add_outcome(event) {
    const new_expense_amount_span = document.createElement("span");
    new_expense_amount_span.style.width = "100px";
    new_expense_amount_span.id = current_expense_id + "amount_" + new_series_number.toString();
+   new_expense_amount_span.className = current_expense_id + "amount"
    new_expense_amount_span.onclick = update_expense;
 
    const new_expense_remove_btn = document.createElement("button");
