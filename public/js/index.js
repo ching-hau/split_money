@@ -89,14 +89,14 @@ function add_person() {
 
    const current_input = document.createElement("input");
    current_input.id = INPUT_PRIFIX + new_id;
-   current_input.style.width = "200px";
+   current_input.style.width = "100px";
    enter_as_click(current_input, update_input);
 
    const current_span = document.createElement("span");
    current_span.id = TEXT_PRIFIX + new_id;
    current_span.onclick = update_input;
    current_span.style.display = "none";
-   current_span.style.width = "200px";
+   current_span.style.width = "100px";
    
    const current_add_expense_btn = document.createElement("button");
    current_add_expense_btn.id = BTN_PRIFIX + new_id.toString();
@@ -171,7 +171,7 @@ function add_outcome(event) {
    enter_as_click(new_amount_input, update_expense);
 
    const new_expense_amount_span = document.createElement("span");
-   new_expense_amount_span.style.width = "200px";
+   new_expense_amount_span.style.width = "100px";
    new_expense_amount_span.id = current_expense_id + "amount_" + new_series_number.toString();
    new_expense_amount_span.onclick = update_expense;
 
